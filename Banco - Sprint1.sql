@@ -2,7 +2,7 @@ create database sprint1;
 use sprint1;
 create table usuario ( idUsuario int primary key auto_increment , nome varchar(20) , email varchar(50) unique, telefone varchar(20), senha varchar(30) unique, cargo varchar(30), idFazenda int);
 create table fazenda ( idFazenda int auto_increment primary key , nome_fazenda varchar(50) , logradouro varchar(60), telefone_fazenda varchar(20), email_fazenda varchar(50) , UF char(2));
-create table plantacao ( idFazenda int auto_increment primary key , idPlantacao int , SensorTemp float , SensorUmid float);
+create table plantacao ( idFazenda int auto_increment primary key , idPlantacao char(1) , SensorTemp float , SensorUmid float);
 -- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 -- Fazenda Espelho D'água
 insert into usuario values ( null, 'José Almeida', 'almeida.jose@gmail.com', '(65) 94359-8253', '$MaklSOJFER', 'Proprietário', 1);
@@ -31,6 +31,22 @@ insert into fazenda values ( null, 'Fazenda Falcão', 'Rod MT 220, Km 110, Porto
 insert into plantacao values ( null, 1, 24.8, 34);
 insert into usuario values ( null, 'Leticia Lima', 'lima.leticia@hotmail.com', '(65) 99867-2109', '31;JGd8H[m', 'Gerente', 4);
 insert into usuario values ( null, 'Carolina Vieira', 'carolina.vieira@outlook.com', '(11) 98746-8593', 'wx0qjZ5m[3', 'Operador', 4);
-
-
-
+-- -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-- Comandos
+select * from usuario;
+select * from fazenda;
+select * from plantacao;
+select * from usuario where idFazenda=1;
+select * from usuario where idFazenda=2;
+select * from usuario where idFazenda=3;
+select * from usuario where idFazenda=4;
+select nome from usuario where cargo='Proprietário';
+alter table plantacao add column statusSensor char(10);
+select * from plantacao;
+update plantacao set statusSensor = 'Ligado' where idFazenda = 1;
+update plantacao set statusSensor = 'Desligado' where idFazenda = 2;
+update plantacao set statusSensor = 'Desligado' where idFazenda = 3;
+update plantacao set statusSensor = 'Ligado' where idFazenda = 4;
+drop table usuario;
+drop table fazenda;
+drop table plantacao;
