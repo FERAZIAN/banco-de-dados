@@ -42,6 +42,7 @@ select * from usuario where idFazenda=3;
 select * from usuario where idFazenda=4;
 select nome from usuario where cargo='Proprietário';
 alter table plantacao add column statusSensor char(10);
+alter table plantacao add constraint chkstatusSensor check (statusSensor in('Ligado','Desligado'));
 select * from plantacao;
 update plantacao set statusSensor = 'Ligado' where idFazenda = 1;
 update plantacao set statusSensor = 'Desligado' where idFazenda = 2;
