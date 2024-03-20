@@ -21,7 +21,7 @@ nome_fazenda varchar(50),
  
 create table plantacao 
 ( idFazenda int auto_increment primary key,
- idPlantacao char(1),
+ idPlantacao char(2),
  SensorTemp float,
  SensorUmid float,
  HoraColeta datetime);
